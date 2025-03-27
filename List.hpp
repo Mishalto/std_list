@@ -13,18 +13,18 @@ struct Node
 
     Node() : prev_(nullptr), next_(nullptr) {}
     Node(T obj) : prev_(nullptr), next_(nullptr), obj_(obj) {}
-
-    void get_info(Node<T>* nd) const {
-        std::cout << "prev[" << (nd->prev_ != nullptr ? std::to_string(nd->prev_->obj_) : "nullptr") << "]\n";
-        std::cout << "obj[" << nd->obj_ << "]\n";
-        std::cout << "next[" << (nd->next_ != nullptr ? std::to_string(nd->next_->obj_) : "nullptr") << "]\n\n";
-    }
 };
 
 template <typename T>
 class List {
 private:
     Node<T>* head_;
+
+    void get_info(Node<T>* nd) const {
+        std::cout << "prev[" << (nd->prev_ != nullptr ? std::to_string(nd->prev_->obj_) : "nullptr") << "]\n";
+        std::cout << "obj[" << nd->obj_ << "]\n";
+        std::cout << "next[" << (nd->next_ != nullptr ? std::to_string(nd->next_->obj_) : "nullptr") << "]\n\n";
+    }
 
 public:
     List(T obj) {
