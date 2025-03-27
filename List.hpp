@@ -45,10 +45,9 @@ public:
             while (curr->next_ != nullptr) {
                 curr = curr->next_;
             }
-            Node<T>* next = new Node<T>;
-            next->obj_ = obj;
+            Node<T>* next = new Node<T>(obj);
+            next->prev_ = curr;
             curr->next_ = next;
-            curr->next_->prev_ = curr;
         } else {
             head_ = new Node<T>;
             head_->obj_ = obj;
