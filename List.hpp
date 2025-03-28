@@ -27,6 +27,8 @@ private:
     }
 
 public:
+    List() {}
+
     List(T obj) {
         head_ = new Node<T>(obj);
     }
@@ -49,8 +51,8 @@ public:
             next->prev_ = curr;
             curr->next_ = next;
         } else {
-            head_ = new Node<T>;
-            head_->obj_ = obj;
+            head_ = new Node<T>(obj);
+            get_info(head_);
         }
     }
 };
