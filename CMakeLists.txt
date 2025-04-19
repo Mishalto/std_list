@@ -17,7 +17,7 @@ enable_testing()
 
 add_executable(list test.cpp)
 
-target_include_directories(list PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/list)
+target_include_directories(list PRIVATE list)
 target_link_libraries(list PRIVATE GTest::gtest_main)
 target_compile_options(list PRIVATE -Wall -Wextra -Werror)
 
