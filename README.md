@@ -2,7 +2,7 @@
  This is my own implementation of a template-based doubly linked list  
 
 ## Features & Tools Used
-- __Valgrind__ - no memory leaks
+- __Valgrind__ - no memory leaks.  
 - __Google Test__ - the entire basic interface is covered with unit tests.
 
 ## Interface
