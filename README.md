@@ -22,9 +22,8 @@ This is my own implementation of a template-based doubly linked list.
 ```cpp
 List<int> list;
 list.push_back(10);
-list.push_back(20);
-std::cout << list.front() << std::endl;  // Output: 10
-std::cout << list.back() << std::endl;   // Output: 20
+std::cout << list.back() << '\n'       // Output: 10
+std::cout << list.is_empty() << '\n'   // Output: 0
 ```
 ## Build and Run
 
