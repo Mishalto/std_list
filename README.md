@@ -32,7 +32,7 @@ To build and run the project, follow these steps:
 1. **Requirements:**:  
    - **Ubuntu or other Linux distrib**
    - **VS Code**  
-   - **CMake(Release)**  
+   - **CMake(last release)**  
    - **Git**
 
 2. **Clone the Repository**:
