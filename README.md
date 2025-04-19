@@ -30,11 +30,10 @@ std::cout << list.back() << std::endl;   // Output: 20
 
 To build and run the project, follow these steps:
 
-1. **Install Dependencies**:  
-   Make sure you have the following tools installed:
+1. **Needed:**:  
    - **Ubuntu**
    - **VS Code**  
-   - **CMake**  
+   - **CMake(Release)**  
    - **Git**
 
 2. **Clone the Repository**:
