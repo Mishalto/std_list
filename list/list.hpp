@@ -20,39 +20,70 @@ class List {
 private:
     Node<T>* head_;
 
-    void get_info(Node<T>* nd) const {
-        std::cout << "prev[" << (nd->prev_ != nullptr ? std::to_string(nd->prev_->obj_) : "nullptr") << "]\n";
-        std::cout << "obj[" << nd->obj_ << "]\n";
-        std::cout << "next[" << (nd->next_ != nullptr ? std::to_string(nd->next_->obj_) : "nullptr") << "]\n\n";
-    }
-
 public:
-    List() {}
+    // Default constructor
+    List() : head_(nullptr) {}
 
+    // Constructor with parameters
     List(T obj) {
         head_ = new Node<T>(obj);
     }
 
-    void print_all_elem() const {
+    // Destructor
+    // valgrind --leak-check=full ./list
+    // no leak
+    ~List() {
         Node<T>* curr = head_;
         while (curr != nullptr) {
-            std::cout << curr->obj_ << " ";
-            curr = curr->next_;
+            Node<T>* temp = curr->next_;
+            delete curr;
+            curr = temp;
         }
     }
 
-    void push_back(T obj) {
+    // Get first object
+    T& front() {
         if (head_ != nullptr) {
+            return head_->obj_;
+        } else {
+            throw std::out_of_range("Empty");
+        }
+    }
+
+    // Get last object 
+    T& back() {
+        if (head_ == nullptr) {
+            throw std::out_of_range("Empty");
+        }
+
+        Node<T> *back = head_;
+        while (back->next_ != nullptr) {
+            back = back->next_;
+        }
+
+        return back->obj_;
+    }
+
+    // Empty check
+    bool is_empty() {
+        return head_ == nullptr;
+    }
+
+    // Insert element at end
+    void push_back(T obj) {
+        if (head_ == nullptr) {
+            head_ = new Node<T>(obj);
+            return;
+        } else {
+            Node<T>* new_node = new Node<T>(obj);
+
             Node<T>* curr = head_;
-            while (curr->next_ != nullptr) {
+            while (curr->next_ != nullptr)
+            {
                 curr = curr->next_;
             }
-            Node<T>* next = new Node<T>(obj);
-            next->prev_ = curr;
-            curr->next_ = next;
-        } else {
-            head_ = new Node<T>(obj);
-            get_info(head_);
+            curr->next_ = new_node;
+            curr->next_->prev_ = curr;
         }
     }
 };
