@@ -25,3 +25,22 @@ list.push_back(10);
 list.push_back(20);
 std::cout << list.front() << std::endl;  // Output: 10
 std::cout << list.back() << std::endl;   // Output: 20
+```
+## Build and Run
+
+To build and run the project, follow these steps:
+
+1. **Install Dependencies**:  
+   Make sure you have the following tools installed:
+   - **Ubuntu**
+   - **VS Code**  
+   - **CMake**  
+   - **Git**
+
+2. **Clone the Repository**:
+
+3. **Open folder with VSCode and start build**
+
+4. **In build folder**
+```bash
+./list
