@@ -1,15 +1,27 @@
-# My linked list  
- This is my own implementation of a template-based doubly linked list  
+# My Linked List
+
+This is my own implementation of a template-based doubly linked list.
 
 ## Features & Tools Used
-- __Valgrind__ - no memory leaks.  
-- __Google Test__ - the entire basic interface is covered with unit tests.
+
+- **Valgrind**: No memory leaks.
+- **Google Test**: The entire basic interface is covered with unit tests.
 
 ## Interface
-- __List()__                - default constructor, creates an empty list  
-- __List(T obj)__           - constructs a list with a single element  
-- __~List()__	              - destructor, deletes all nodes, fully deallocates  
-- __T& front()__            - returns a reference to the first element  
-- __T& back()__             - returns a reference to the last element  
-- __bool is_empty()__       - checks if the list is empty  
-- __void push_back(T obj)__ - inserts a new element at the end of the list  
+
+- `List()`                 — Default constructor, creates an empty list.
+- `List(T obj)`            — Constructs a list with a single element.
+- `~List()`                 — Destructor, deletes all nodes, fully deallocates memory.
+- `T& front()`              — Returns a reference to the first element.
+- `T& back()`               — Returns a reference to the last element.
+- `bool is_empty()`         — Checks if the list is empty.
+- `void push_back(T obj)`   — Inserts a new element at the end of the list.
+
+## Example Usage
+
+```cpp
+List<int> list;
+list.push_back(10);
+list.push_back(20);
+std::cout << list.front() << std::endl;  // Output: 10
+std::cout << list.back() << std::endl;   // Output: 20
