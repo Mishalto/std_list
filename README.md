@@ -31,7 +31,7 @@ std::cout << list.back() << std::endl;   // Output: 20
 To build and run the project, follow these steps:
 
 1. **Requirements:**:  
-   - **Ubuntu**
+   - **Ubuntu or other Linux distrib**
    - **VS Code**  
    - **CMake(Release)**  
    - **Git**
