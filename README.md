@@ -30,7 +30,7 @@ std::cout << list.back() << std::endl;   // Output: 20
 
 To build and run the project, follow these steps:
 
-1. **Needed:**:  
+1. **Requirements:**:  
    - **Ubuntu**
    - **VS Code**  
    - **CMake(Release)**  
