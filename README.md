@@ -2,8 +2,8 @@
  This is my own implementation of a template-based doubly linked list  
 
 ## Features & Tools Used
-- Valgrind - no memory leaks
-- Google Test - the entire basic interface is covered with unit tests.
+- __Valgrind__ - no memory leaks
+- __Google Test__ - the entire basic interface is covered with unit tests.
 
 ## Interface
 - List() - default constructor, creates an empty list  
