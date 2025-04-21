@@ -1,6 +1,6 @@
 #pragma once
 
-#include <iostream> // for throw
+#include <stdexcept> // for throw
 
 template <typename T>
 struct Node {
@@ -9,7 +9,7 @@ struct Node {
 
     T obj_;
 
-    Node() : prev_(nullptr), next_(nullptr) {};
+    Node() : prev_(nullptr), next_(nullptr) {}
     Node(const T& obj) : prev_(nullptr), next_(nullptr), obj_(obj) {}
 };
 
@@ -34,12 +34,26 @@ public:
     // valgrind --leak-check=full ./list    ulimit -n 65536(descriptor error)
     // Best: O(1), Overrall O(n)
     ~List() {
+        Node<T> *curr = head_;
+        while (curr != nullptr) {
+            Node<T> *temp = curr->next_;
+            delete curr;
+            curr = temp;
+        }
+    }
+
+    // Destruct list
+    void clear() {
         Node<T>* curr = head_;
         while (curr != nullptr) {
             Node<T>* temp = curr->next_;
             delete curr;
             curr = temp;
         }
+
+        head_->next_ = nullptr;
+        head_ = nullptr;
+        size_ = 0;
     }
 
     // Get first object
@@ -100,6 +114,7 @@ public:
         } else if (size_ == 2) {
             delete tail_;
             head_->next_ = nullptr;
+            head_->prev_ = nullptr;
             tail_ = head_;
         } else if (size_ == 1) {
             delete head_;

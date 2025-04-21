@@ -15,37 +15,45 @@ TEST(MyList, constructor_with_obj) {
     ASSERT_FALSE(list.is_empty());
 }
 
-TEST(MyList, check_push_back) {
+TEST(MyList, clear) {
+    List<int> list(1);
+    list.push_back(2);
+    list.clear();
+    ASSERT_TRUE(list.is_empty());
+    ASSERT_EQ(list.size(), 0);
+}
+
+TEST(MyList, push_back) {
     List<int> list;
     list.push_back(4);
     ASSERT_EQ(list.back(), 4);
 
-    list.push_back(2);
+    list.push_back(2);  // list: 2 4
     ASSERT_EQ(list.back(), 2);
     ASSERT_EQ(list.front(), 4);
 }
 
-TEST(MyList, check_pop_back) {
+TEST(MyList, pop_back) {
     List<int> list;
     ASSERT_THROW(list.pop_back(), std::out_of_range);
 
     list.push_back(1);
-    list.pop_back();
+    list.pop_back();    // Empty
     ASSERT_TRUE(list.is_empty());
 
     list.push_back(1);
     list.push_back(2);
-    list.pop_back();
+    list.pop_back();    // list: 1
     ASSERT_EQ(list.size(), 1);
     ASSERT_EQ(list.back(), 1);
 
     list.push_back(2);
     list.push_back(3);
-    list.pop_back();
+    list.pop_back();    // list: 1 2
     ASSERT_EQ(list.back(), 2);
 }
 
-TEST(MyList, check_push_front) {
+TEST(MyList, push_front) {
     List<int> list;
     list.push_front(1);
     ASSERT_EQ(list.front(), 1);
@@ -59,7 +67,7 @@ TEST(MyList, check_push_front) {
     ASSERT_EQ(list.back(), 1);
 }
 
-TEST(MyList, check_pop_front) {
+TEST(MyList, pop_front) {
     List<int> list;
     ASSERT_THROW(list.pop_front(), std::out_of_range);
 
@@ -79,7 +87,7 @@ TEST(MyList, check_pop_front) {
     ASSERT_EQ(list.front(), 3);
 }
 
-TEST(MyList, check_front) {
+TEST(MyList, front) {
     List<int> list;
     EXPECT_THROW(list.front(), std::out_of_range);
 
@@ -87,7 +95,7 @@ TEST(MyList, check_front) {
     ASSERT_EQ(list.front(), 1);
 }
 
-TEST(MyList, check_back) {
+TEST(MyList, back) {
     List<int> list;
     EXPECT_THROW(list.back(), std::out_of_range);
 
@@ -95,7 +103,7 @@ TEST(MyList, check_back) {
     ASSERT_EQ(list.back(), 1);
 }
 
-TEST(MyList, check_empty) {
+TEST(MyList, is_empty) {
     List<int> list;
     ASSERT_EQ(list.is_empty(), true);
 }
@@ -115,7 +123,7 @@ TEST(MyList, check_tail) {
 
 }
 
-TEST(MyList, check_size) {
+TEST(MyList, size) {
     List<int> list;
     ASSERT_EQ(list.size(), 0);
 

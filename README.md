@@ -5,6 +5,16 @@ This is my own implementation of a template-based doubly linked list.
 ## Features & Tools Used
 
 - **Valgrind**: No memory leaks.
+```bash
+in use at exit: 0 bytes in 0 blocks
+total heap usage: 335 allocs, 335 frees, 127,066 bytes allocated
+
+All heap blocks were freed -- no leaks are possible
+
+For lists of detected and suppressed errors, rerun with: -s
+ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+```
+
 - **Google Test**: The entire basic interface is covered with unit tests.
 ```cpp
 TEST(MyList, check_push_back) {
@@ -23,6 +33,7 @@ TEST(MyList, check_push_back) {
 - `List()`                        — Default constructor, creates an empty list.
 - `List(const T& obj)`            — Constructs a list with a single element.
 - `~List()`                       — Destructor, deletes all nodes, fully deallocates memory.
+- `void clear()`                  — Destruct list   
 - `T& front()`                    — Returns a reference to the first element.
 - `T& back()`                     — Returns a reference to the last element.
 - `bool is_empty()`               — Checks if the list is empty.
@@ -45,9 +56,8 @@ std::cout << list.is_empty() << '\n'   // Output: 0
 To build and run the project, follow these steps:
 
 1. **Requirements:**:  
-   - **Ubuntu or other Linux distrib**
    - **VS Code**  
-   - **CMake(last release)**  
+   - **CMake (last stable release)**  
    - **Git**
 
 2. **Clone the Repository**:
