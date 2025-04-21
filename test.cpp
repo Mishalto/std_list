@@ -25,6 +25,26 @@ TEST(MyList, check_push_back) {
     ASSERT_EQ(list.front(), 4);
 }
 
+TEST(MyList, check_pop_back) {
+    List<int> list;
+    ASSERT_THROW(list.pop_back(), std::out_of_range);
+
+    list.push_back(1);
+    list.pop_back();
+    ASSERT_TRUE(list.is_empty());
+
+    list.push_back(1);
+    list.push_back(2);
+    list.pop_back();
+    ASSERT_EQ(list.size(), 1);
+    ASSERT_EQ(list.back(), 1);
+
+    list.push_back(2);
+    list.push_back(3);
+    list.pop_back();
+    ASSERT_EQ(list.back(), 2);
+}
+
 TEST(MyList, check_front) {
     List<int> list;
     EXPECT_THROW(list.front(), std::out_of_range);

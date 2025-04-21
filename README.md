@@ -16,7 +16,7 @@ This is my own implementation of a template-based doubly linked list.
 - `T& back()`                    — Returns a reference to the last element.
 - `bool is_empty()`              — Checks if the list is empty.
 - `void push_back(const T& obj)` — Inserts a new element at the end of the list.
-- 'size_t size()'                — Return list size
+- `size_t size()`                — Return list size
 
 ## Example Usage
 

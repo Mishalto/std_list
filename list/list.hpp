@@ -31,7 +31,7 @@ public:
     }
 
     // Destructor, no leak
-    // valgrind --leak-check=full ./list
+    // valgrind --leak-check=full ./list    ulimit -n 65536(descriptor error)
     // Best: O(1), Overrall O(n)
     ~List() {
         Node<T>* curr = head_;
@@ -65,6 +65,7 @@ public:
         return !size_;
     }
 
+    // Return list size
     size_t size() {
         return size_;
     }
@@ -87,6 +88,28 @@ public:
             tail_->next_ = new_node;
             tail_ = new_node;
             size_ += 1;
+        }
+    }
+
+    void pop_back() {
+        if (size_ > 2) {
+            Node<T>* temp = tail_->prev_;
+            delete tail_;
+            tail_ = temp;
+            tail_->next_ = nullptr;
+            size_-= 1;
+        } else if (size_ == 2) {
+            delete tail_;
+            head_->next_ = nullptr;
+            tail_ = head_;
+            size_-= 1;
+        } else if (size_ == 1) {
+            delete head_;
+            head_ = nullptr;
+            tail_ = nullptr;
+            size_-= 1;
+        } else if (size_ == 0) {
+            throw std::out_of_range("Try to pop_back on empty_list");
         }
     }
 };
