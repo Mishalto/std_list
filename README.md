@@ -6,6 +6,17 @@ This is my own implementation of a template-based doubly linked list.
 
 - **Valgrind**: No memory leaks.
 - **Google Test**: The entire basic interface is covered with unit tests.
+```cpp
+TEST(MyList, check_push_back) {
+    List<int> list;
+    list.push_back(4);
+    ASSERT_EQ(list.back(), 4);
+
+    list.push_back(2);
+    ASSERT_EQ(list.back(), 2);
+    ASSERT_EQ(list.front(), 4);
+}
+```
 
 ## Interface
 
@@ -18,6 +29,7 @@ This is my own implementation of a template-based doubly linked list.
 - `void push_back(const T& obj)`  — Inserts a new element at the end of the list.
 - `void pop_back()`               — Delete last element
 - `void push_front(const T& obj)` — Inserts a new element at the head.
+- `void pop_front()`              — Delete first element
 - `size_t size()`                 — Return list size
 
 ## Example Usage

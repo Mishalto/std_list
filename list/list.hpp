@@ -89,30 +89,32 @@ public:
         size_ += 1;
     }
 
-    // Remove last element
+    // Delete last element
+    // O(1)
     void pop_back() {
+        if (size_ == 0) {
+            throw std::out_of_range("Try to pop_back on empty_list");
+        }
+
         if (size_ > 2) {
             Node<T>* temp = tail_->prev_;
             delete tail_;
             tail_ = temp;
             tail_->next_ = nullptr;
-            size_-= 1;
         } else if (size_ == 2) {
             delete tail_;
             head_->next_ = nullptr;
             tail_ = head_;
-            size_-= 1;
         } else if (size_ == 1) {
             delete head_;
             head_ = nullptr;
             tail_ = nullptr;
-            size_-= 1;
-        } else if (size_ == 0) {
-            throw std::out_of_range("Try to pop_back on empty_list");
         }
+        size_-= 1;
     }
 
     // Push element to head
+    // 0(1)
     void push_front(const T& obj) {
         Node<T>* new_node = new Node<T>(obj);
         if (is_empty()) {
@@ -124,5 +126,29 @@ public:
             head_ = new_node;
         }
         size_ += 1;
+    }
+
+    // Delete first element
+    // O(1)
+    void pop_front() {
+        if (is_empty()) {
+            throw std::out_of_range("Empty");
+        }
+
+        if (size_ == 1) {
+            delete head_;
+            head_ = nullptr;
+            tail_ = nullptr;
+        } else if (size_ == 2) {
+            tail_->prev_ = nullptr;
+            delete head_;
+            head_ = tail_;
+        } else {
+            Node<T>* temp = head_->next_;
+            delete head_;
+            head_ = temp;
+            head_->prev_ = nullptr;
+        }
+        size_ -= 1;
     }
 };
