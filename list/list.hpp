@@ -4,15 +4,14 @@
 #include <string>
 
 template <typename T>
-struct Node
-{
+struct Node {
     Node* prev_;
     Node* next_;
 
     T obj_;
 
-    Node() : prev_(nullptr), next_(nullptr) {}
-    Node(T obj) : prev_(nullptr), next_(nullptr), obj_(obj) {}
+    Node() : prev_(nullptr), next_(nullptr) {};
+    Node(const T& obj) : prev_(nullptr), next_(nullptr), obj_(obj) {}
 };
 
 template <typename T>
@@ -25,7 +24,7 @@ public:
     List() : head_(nullptr) {}
 
     // Constructor with parameters
-    List(T obj) {
+    List(const T& obj) {
         head_ = new Node<T>(obj);
     }
 
@@ -70,7 +69,7 @@ public:
     }
 
     // Insert element at end
-    void push_back(T obj) {
+    void push_back(const T& obj) {
         if (head_ == nullptr) {
             head_ = new Node<T>(obj);
             return;
@@ -78,8 +77,7 @@ public:
             Node<T>* new_node = new Node<T>(obj);
 
             Node<T>* curr = head_;
-            while (curr->next_ != nullptr)
-            {
+            while (curr->next_ != nullptr) {
                 curr = curr->next_;
             }
             curr->next_ = new_node;

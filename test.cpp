@@ -4,18 +4,21 @@
 
 TEST(MyList, default_constuctor) {
     List<int> list;
+
     ASSERT_EQ(list.is_empty(), true);
 }
 
 TEST(MyList, constructor_with_obj) {
     List<int> list(1);
+
     ASSERT_EQ(list.front(), 1);
+    ASSERT_FALSE(list.is_empty());
 }
 
-TEST(MyList, can_push_back) {
-    List<int> list(2);
-    list.push_back(3);
+TEST(MyList, push_back) {
+    List<int> list;
     list.push_back(4);
+
     ASSERT_EQ(list.back(), 4);
 }
 
