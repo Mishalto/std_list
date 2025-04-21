@@ -1,6 +1,6 @@
 # My Linked List
 
-This is my own implementation of a template-based doubly linked list.
+This is my own implementation of a template-based doubly linked list, without using `std`.  
 
 ## Features & Tools Used
 
@@ -17,7 +17,7 @@ ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 
 - **Google Test**: The entire basic interface is covered with unit tests.
 ```cpp
-TEST(MyList, check_push_back) {
+TEST(MyList, push_back) {
     List<int> list;
     list.push_back(4);
     ASSERT_EQ(list.back(), 4);
@@ -32,6 +32,8 @@ TEST(MyList, check_push_back) {
 
 - `List()`                        — Default constructor, creates an empty list.
 - `List(const T& obj)`            — Constructs a list with a single element.
+- `List(const List &other)`       — Copy constructor
+- `List& operator=(const List& other)` — Copy assigment constructor
 - `~List()`                       — Destructor, deletes all nodes, fully deallocates memory.
 - `void clear()`                  — Destruct list   
 - `T& front()`                    — Returns a reference to the first element.
@@ -42,6 +44,13 @@ TEST(MyList, check_push_back) {
 - `void push_front(const T& obj)` — Inserts a new element at the head.
 - `void pop_front()`              — Delete first element
 - `size_t size()`                 — Return list size
+
+## Notes  
+
+I know std::list overloads operators like front, back and other,
+but I see no point in overloading them here since my project isn't for development purposes.
+
+
 
 ## Example Usage
 

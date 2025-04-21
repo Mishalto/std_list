@@ -15,6 +15,28 @@ TEST(MyList, constructor_with_obj) {
     ASSERT_FALSE(list.is_empty());
 }
 
+TEST(MyList, copy_constructor) {
+    List<int> list(1);
+    List<int> list2 = list;
+
+    ASSERT_EQ(list2.back(), 1);
+    ASSERT_EQ(list2.size(), 1);
+}
+
+TEST(MyList, copy_assigment_constructor) {
+    List<int> list(1);
+    list.push_back(2);
+    list.push_back(3);
+
+    List<int> list2;
+
+    list2 = list;
+
+    ASSERT_EQ(list2.front(), 1);
+    ASSERT_EQ(list2.back(), 3);
+    ASSERT_EQ(list2.size(), 3);
+}
+
 TEST(MyList, clear) {
     List<int> list(1);
     list.push_back(2);

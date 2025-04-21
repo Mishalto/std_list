@@ -30,6 +30,35 @@ public:
         tail_ = head_;
     }
 
+    // Copy constructor
+    // Deep copy
+    List(const List &other) : head_(nullptr), tail_(nullptr), size_(0) {
+        Node<T>* other_curr = other.head_;
+        while (other_curr != nullptr) {
+            push_back(other_curr->obj_);
+            other_curr = other_curr->next_;
+        }
+    }
+
+    // Copy assigment constructor
+    List& operator=(const List& other) {
+        if (this != &other) {
+            clear();
+            List<T> temp = other;
+
+            std::swap(head_, temp.head_);
+            std::swap(tail_, temp.tail_);
+            std::swap(size_, temp.size_);
+        }
+
+        return *this;
+    }
+
+    // Explicit delete
+    // Not going to implement it
+    List(List&& other) = delete;
+    List& operator=(List&& other) = delete;
+
     // Destructor, no leak
     // valgrind --leak-check=full ./list    ulimit -n 65536(descriptor error)
     // Best: O(1), Overrall O(n)
@@ -44,6 +73,10 @@ public:
 
     // Destruct list
     void clear() {
+        if (head_ == nullptr) {
+            return;
+        }
+
         Node<T>* curr = head_;
         while (curr != nullptr) {
             Node<T>* temp = curr->next_;
@@ -51,13 +84,14 @@ public:
             curr = temp;
         }
 
-        head_->next_ = nullptr;
         head_ = nullptr;
+        tail_ = nullptr;
         size_ = 0;
     }
 
     // Get first object
     // O(1)
+    // 
     T& front() {
         if (is_empty()) {
             throw std::out_of_range("Empty");
