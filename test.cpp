@@ -61,6 +61,17 @@ TEST(MyList, check_tail) {
 
 }
 
+TEST(MyList, check_size) {
+    List<int> list;
+    ASSERT_EQ(list.size(), 0);
+
+    list.push_back(1);
+    ASSERT_EQ(list.size(), 1);
+
+    list.push_back(2);
+    ASSERT_EQ(list.size(), 2);
+}
+
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();

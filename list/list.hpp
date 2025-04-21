@@ -19,19 +19,20 @@ private:
     Node<T>* head_;
     Node<T>* tail_;
 
+    size_t size_;
 public:
     // Default constructor
-    List() : head_(nullptr), tail_(nullptr) {}
+    List() : head_(nullptr), tail_(nullptr), size_(0) {}
 
     // Constructor with parameters
-    List(const T& obj) {
+    List(const T& obj) : size_(1) {
         head_ = new Node<T>(obj);
         tail_ = head_;
     }
 
-    // Destructor
+    // Destructor, no leak
     // valgrind --leak-check=full ./list
-    // no leak
+    // Best: O(1), Overrall O(n)
     ~List() {
         Node<T>* curr = head_;
         while (curr != nullptr) {
@@ -61,7 +62,11 @@ public:
 
     // Empty check
     bool is_empty() {
-        return head_ == nullptr;
+        return !size_;
+    }
+
+    size_t size() {
+        return size_;
     }
 
     // Insert element at end
@@ -70,15 +75,18 @@ public:
         if (is_empty()) {
             head_ = new Node<T>(obj);
             tail_ = head_;
+            size_ += 1;
         } else if (head_ == tail_) {
             tail_ = new Node<T>(obj);
             head_->next_ = tail_;
             tail_->prev_ = head_;
+            size_ += 1;
         } else {
             Node<T>* new_node = new Node<T>(obj);
             new_node->prev_ = tail_;
             tail_->next_ = new_node;
             tail_ = new_node;
+            size_ += 1;
         }
     }
 };
