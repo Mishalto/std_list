@@ -9,14 +9,16 @@ This is my own implementation of a template-based doubly linked list.
 
 ## Interface
 
-- `List()`                       — Default constructor, creates an empty list.
-- `List(const T& obj)`           — Constructs a list with a single element.
-- `~List()`                      — Destructor, deletes all nodes, fully deallocates memory.
-- `T& front()`                   — Returns a reference to the first element.
-- `T& back()`                    — Returns a reference to the last element.
-- `bool is_empty()`              — Checks if the list is empty.
-- `void push_back(const T& obj)` — Inserts a new element at the end of the list.
-- `size_t size()`                — Return list size
+- `List()`                        — Default constructor, creates an empty list.
+- `List(const T& obj)`            — Constructs a list with a single element.
+- `~List()`                       — Destructor, deletes all nodes, fully deallocates memory.
+- `T& front()`                    — Returns a reference to the first element.
+- `T& back()`                     — Returns a reference to the last element.
+- `bool is_empty()`               — Checks if the list is empty.
+- `void push_back(const T& obj)`  — Inserts a new element at the end of the list.
+- `void pop_back()`               — Delete last element
+- `void push_front(const T& obj)` — Inserts a new element at the head.
+- `size_t size()`                 — Return list size
 
 ## Example Usage
 

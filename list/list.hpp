@@ -73,24 +73,23 @@ public:
     // Insert element at end
     // O(1)
     void push_back(const T& obj) {
+        Node<T>* new_node = new Node<T>(obj);
         if (is_empty()) {
-            head_ = new Node<T>(obj);
+            head_ = new_node;
             tail_ = head_;
-            size_ += 1;
         } else if (head_ == tail_) {
-            tail_ = new Node<T>(obj);
+            tail_ = new_node;
             head_->next_ = tail_;
             tail_->prev_ = head_;
-            size_ += 1;
         } else {
-            Node<T>* new_node = new Node<T>(obj);
             new_node->prev_ = tail_;
             tail_->next_ = new_node;
             tail_ = new_node;
-            size_ += 1;
         }
+        size_ += 1;
     }
 
+    // Remove last element
     void pop_back() {
         if (size_ > 2) {
             Node<T>* temp = tail_->prev_;
@@ -111,5 +110,19 @@ public:
         } else if (size_ == 0) {
             throw std::out_of_range("Try to pop_back on empty_list");
         }
+    }
+
+    // Push element to head
+    void push_front(const T& obj) {
+        Node<T>* new_node = new Node<T>(obj);
+        if (is_empty()) {
+            head_ = new_node;
+            tail_ = head_;
+        } else {
+            new_node->next_ = head_;
+            head_->prev_ = new_node;
+            head_ = new_node;
+        }
+        size_ += 1;
     }
 };
