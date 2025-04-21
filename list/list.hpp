@@ -19,20 +19,6 @@ private:
     Node<T>* head_;
     Node<T>* tail_;
 
-    // Return last element, complexity O(n)
-    Node<T>* get_back() {
-        Node<T>* back = head_;
-        if (is_empty()) {
-            throw std::out_of_range("Empty");
-        } else {
-            while (back->next_ != nullptr) {
-                back = back->next_;
-            }
-        }
-
-        return back;
-    }
-
 public:
     // Default constructor
     List() : head_(nullptr), tail_(nullptr) {}
@@ -58,19 +44,19 @@ public:
     // Get first object
     // O(1)
     T& front() {
-        if (head_ != nullptr) {
-            return head_->obj_;
-        } else {
+        if (is_empty()) {
             throw std::out_of_range("Empty");
         }
+            return head_->obj_;
     }
 
     // Get last object
-    // O(n)
-    T& back() {
-        Node<T>* back = get_back();
-
-        return back->obj_;
+    // O(1)
+    T& back() {;
+        if (is_empty()) {
+            throw std::out_of_range("Empty");
+        }
+        return tail_->obj_;
     }
 
     // Empty check
@@ -79,16 +65,19 @@ public:
     }
 
     // Insert element at end
-    // O(n)
+    // O(1)
     void push_back(const T& obj) {
         if (is_empty()) {
             head_ = new Node<T>(obj);
+            tail_ = head_;
+        } else if (head_ == tail_) {
+            tail_ = new Node<T>(obj);
+            head_->next_ = tail_;
+            tail_->prev_ = head_;
         } else {
             Node<T>* new_node = new Node<T>(obj);
-
-            Node<T>* back = get_back();
-            back->next_ = new_node;
-            back->next_->prev_ = back;
+            new_node->prev_ = tail_;
+            tail_->next_ = new_node;
         }
     }
 };
