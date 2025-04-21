@@ -78,6 +78,7 @@ public:
             Node<T>* new_node = new Node<T>(obj);
             new_node->prev_ = tail_;
             tail_->next_ = new_node;
+            tail_ = new_node;
         }
     }
 };

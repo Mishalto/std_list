@@ -15,7 +15,7 @@ TEST(MyList, constructor_with_obj) {
     ASSERT_FALSE(list.is_empty());
 }
 
-TEST(MyList, push_back) {
+TEST(MyList, check_push_back) {
     List<int> list;
     list.push_back(4);
     ASSERT_EQ(list.back(), 4);
@@ -44,6 +44,21 @@ TEST(MyList, check_back) {
 TEST(MyList, check_empty) {
     List<int> list;
     ASSERT_EQ(list.is_empty(), true);
+}
+
+TEST(MyList, check_tail) {
+    List<int> list(1);
+    ASSERT_EQ(list.front(), 1);
+    ASSERT_EQ(list.back(), 1);
+
+    list.push_back(2);
+    ASSERT_EQ(list.front(), 1);
+    ASSERT_EQ(list.back(), 2);
+
+    list.push_back(3);
+    ASSERT_EQ(list.front(), 1);
+    ASSERT_EQ(list.back(), 3);
+
 }
 
 int main(int argc, char **argv) {
