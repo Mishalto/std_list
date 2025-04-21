@@ -53,7 +53,7 @@ public:
 
     // Get last object
     // O(1)
-    T& back() {;
+    T& back() {
         if (is_empty()) {
             throw std::out_of_range("Empty");
         }
@@ -62,7 +62,7 @@ public:
 
     // Empty check
     bool is_empty() {
-        return !size_;
+        return size_ == 0;
     }
 
     // Return list size
@@ -77,10 +77,6 @@ public:
         if (is_empty()) {
             head_ = new_node;
             tail_ = head_;
-        } else if (head_ == tail_) {
-            tail_ = new_node;
-            head_->next_ = tail_;
-            tail_->prev_ = head_;
         } else {
             new_node->prev_ = tail_;
             tail_->next_ = new_node;
