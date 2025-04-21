@@ -63,12 +63,7 @@ public:
     // valgrind --leak-check=full ./list    ulimit -n 65536(descriptor error)
     // Best: O(1), Overrall O(n)
     ~List() {
-        Node<T> *curr = head_;
-        while (curr != nullptr) {
-            Node<T> *temp = curr->next_;
-            delete curr;
-            curr = temp;
-        }
+        clear();
     }
 
     // Destruct list
