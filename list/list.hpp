@@ -1,7 +1,6 @@
 #pragma once
 
-#include <iostream>
-#include <string>
+#include <iostream> // for throw
 
 template <typename T>
 struct Node {
@@ -18,14 +17,30 @@ template <typename T>
 class List {
 private:
     Node<T>* head_;
+    Node<T>* tail_;
+
+    // Return last element, complexity O(n)
+    Node<T>* get_back() {
+        Node<T>* back = head_;
+        if (is_empty()) {
+            throw std::out_of_range("Empty");
+        } else {
+            while (back->next_ != nullptr) {
+                back = back->next_;
+            }
+        }
+
+        return back;
+    }
 
 public:
     // Default constructor
-    List() : head_(nullptr) {}
+    List() : head_(nullptr), tail_(nullptr) {}
 
     // Constructor with parameters
     List(const T& obj) {
         head_ = new Node<T>(obj);
+        tail_ = head_;
     }
 
     // Destructor
@@ -41,6 +56,7 @@ public:
     }
 
     // Get first object
+    // O(1)
     T& front() {
         if (head_ != nullptr) {
             return head_->obj_;
@@ -49,16 +65,10 @@ public:
         }
     }
 
-    // Get last object 
+    // Get last object
+    // O(n)
     T& back() {
-        if (head_ == nullptr) {
-            throw std::out_of_range("Empty");
-        }
-
-        Node<T> *back = head_;
-        while (back->next_ != nullptr) {
-            back = back->next_;
-        }
+        Node<T>* back = get_back();
 
         return back->obj_;
     }
@@ -69,19 +79,16 @@ public:
     }
 
     // Insert element at end
+    // O(n)
     void push_back(const T& obj) {
-        if (head_ == nullptr) {
+        if (is_empty()) {
             head_ = new Node<T>(obj);
-            return;
         } else {
             Node<T>* new_node = new Node<T>(obj);
 
-            Node<T>* curr = head_;
-            while (curr->next_ != nullptr) {
-                curr = curr->next_;
-            }
-            curr->next_ = new_node;
-            curr->next_->prev_ = curr;
+            Node<T>* back = get_back();
+            back->next_ = new_node;
+            back->next_->prev_ = back;
         }
     }
 };

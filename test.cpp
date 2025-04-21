@@ -18,13 +18,17 @@ TEST(MyList, constructor_with_obj) {
 TEST(MyList, push_back) {
     List<int> list;
     list.push_back(4);
-
     ASSERT_EQ(list.back(), 4);
+
+    list.push_back(2);
+    ASSERT_EQ(list.back(), 2);
+    ASSERT_EQ(list.front(), 4);
 }
 
 TEST(MyList, check_front) {
     List<int> list;
     EXPECT_THROW(list.front(), std::out_of_range);
+
     list.push_back(1);
     ASSERT_EQ(list.front(), 1);
 }
@@ -32,6 +36,7 @@ TEST(MyList, check_front) {
 TEST(MyList, check_back) {
     List<int> list;
     EXPECT_THROW(list.back(), std::out_of_range);
+
     list.push_back(1);
     ASSERT_EQ(list.back(), 1);
 }
