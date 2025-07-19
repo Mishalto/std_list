@@ -30,20 +30,20 @@ TEST(MyList, push_back) {
 
 ## Interface
 
-- `List()`                        — Default constructor, creates an empty list.
-- `List(const T& obj)`            — Constructs a list with a single element.
+- `List()`                        - Default constructor, creates an empty list.
+- `List(const T& obj)`            - Constructs a list with a single element.
 - `List(const List &other)`       — Copy constructor
-- `List& operator=(const List& other)` — Copy assigment constructor
-- `~List()`                       — Destructor, deletes all nodes, fully deallocates memory.
-- `void clear()`                  — Destruct list   
-- `T& front()`                    — Returns a reference to the first element.
-- `T& back()`                     — Returns a reference to the last element.
-- `bool is_empty()`               — Checks if the list is empty.
-- `void push_back(const T& obj)`  — Inserts a new element at the end of the list.
-- `void pop_back()`               — Delete last element
-- `void push_front(const T& obj)` — Inserts a new element at the head.
-- `void pop_front()`              — Delete first element
-- `size_t size()`                 — Return list size
+- `List& operator=(const List& other)` - Copy assigment constructor
+- `~List()`                       - Destructor, deletes all nodes, fully deallocates memory.
+- `void clear()`                  - Destruct list   
+- `T& front()`                    - Returns a reference to the first element.
+- `T& back()`                     - Returns a reference to the last element.
+- `bool is_empty()`               - Checks if the list is empty.
+- `void push_back(const T& obj)`  - Inserts a new element at the end of the list.
+- `void pop_back()`               - Delete last element
+- `void push_front(const T& obj)` - Inserts a new element at the head.
+- `void pop_front()`              - Delete first element
+- `size_t size()`                 - Return list size
 
 ## Notes  
 
