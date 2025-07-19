@@ -9,7 +9,7 @@ This is my own implementation of a template-based doubly linked list, without us
 in use at exit: 0 bytes in 0 blocks
 total heap usage: 335 allocs, 335 frees, 127,066 bytes allocated
 
-All heap blocks were freed -- no leaks are possible
+All heap blocks were freed - no leaks are possible
 
 For lists of detected and suppressed errors, rerun with: -s
 ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
