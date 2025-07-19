@@ -32,7 +32,7 @@ TEST(MyList, push_back) {
 
 - `List()`                        - Default constructor, creates an empty list.
 - `List(const T& obj)`            - Constructs a list with a single element.
-- `List(const List &other)`       — Copy constructor
+- `List(const List &other)`       - Copy constructor
 - `List& operator=(const List& other)` - Copy assigment constructor
 - `~List()`                       - Destructor, deletes all nodes, fully deallocates memory.
 - `void clear()`                  - Destruct list   
